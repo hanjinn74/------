@@ -1,0 +1,72 @@
+
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>배송 주문 및 로그인 양식</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+                background-color: #f9f9f9;
+            }
+            form {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 400px;
+                margin: auto;
+            }
+            label {
+                display: block;
+                margin-bottom: 8px;
+                font-weight: bold;
+            }
+            input[type="text"], input[type="password"], input[type="number"], input[type="submit"] {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            input[type="submit"] {
+                background-color: #007bff;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+            input[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>배송 주문 및 로그인 양식</h1>
+        <form>
+            <h2>로그인 정보</h2>
+            <label for="userId">아이디</label>
+            <input type="text" id="userId" name="userId" placeholder="아이디를 입력하세요" required>
+    
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
+    
+            <h2>배송 정보</h2>
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+    
+            <label for="address">주소</label>
+            <input type="text" id="address" name="address" placeholder="주소를 입력하세요" required>
+    
+            <label for="detailAddress">상세주소</label>
+            <input type="text" id="detailAddress" name="detailAddress" placeholder="상세주소를 입력하세요" required>
+    
+            <label for="postalCode">우편번호</label>
+            <input type="number" id="postalCode" name="postalCode" placeholder="우편번호를 입력하세요" required>
+    
+            <input type="submit" value="제출">
+        </form>
+    </body>
+    </html>
+    
