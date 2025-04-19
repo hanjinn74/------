@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML 편집기 - 종료 태그 자동 입력</title>
+  <style>
+    textarea { width: 500px; height: 200px; margin: 10px; }
+    #output { width: 500px; margin: 10px; padding: 10px; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <h3>HTML 편집기 - 종료 태그 자동 입력</h3>
+  <textarea id="editor" placeholder="HTML 코드를 입력하세요&#10;입력 종료는 '.'로 하세요"></textarea>
+  <div id="output">결과가 여기에 표시됩니다</div>
+
+  <script>
+    const editor = document.getElementById('editor');
+    const output = document.getElementById('output');
+
+    // 자체 종료 태그 목록
+    const selfClosingTags = ['img', 'br', 'hr', 'input', 'meta', 'link'];
+
+    // 입력 처리 및 태그 분석
+    editor.addEventListener('input', function () {
+      let input = editor.value.trim();
+      
+      // 입력이 '.'로 끝나면 처리 시작
+      if (!input.endsWith('.')) {
+        output.textContent = "입력을 완료하려면 '.'를 입력하세요";
+        return;
+      }
+
+      // '.' 제거
+      input = input.slice(0, -1).trim();
+
+      // 줄바꿈으로 입력 분리
+      const lines = input.split('\n').map(line => line.trim()).filter(line => line);
+
+      let stack = []; // 열린 태그를 추적하는 스택
+      let result = []; // 결과 HTML을 저장
+
+      for (let line of lines) {
+        // 태그와 텍스트 분리
+        let currentLine = '';
+        let textContent = '';
+        let inTag = false;
+        let tagBuffer = '';
+
+        for (let i = 0; i < line.length; i++) {
+          if (line[i] === '<' && !inTag) {
+            inTag = true;
+            tagBuffer = '<';
+            if (textContent) {
+              currentLine += textContent;
+              textContent = '';
+            }
+          } else if (line[i] === '>' && inTag) {
+            inTag = false;
+            tagBuffer += '>';
+            currentLine += tagBuffer;
+
+            // 태그 분석
+            const tagMatch = tagBuffer.match(/^<(\/)?([a-zA-Z]+)([^>]*)>/);
+            if (tagMatch) {
+              const isClosing = tagMatch[1] === '/';
+              const tagName = tagMatch[2].toLowerCase();
+
+              if (isClosing) {
+                // 닫힘 태그 처리
+                if (stack.length > 0 && stack[stack.length - 1] === tagName) {
+                  stack.pop();
+                }
+              } else if (!selfClosingTags.includes(tagName)) {
+                // 열림 태그이고 자체 종료 태그가 아니면 스택에 추가
+                stack.push(tagName);
+              }
+            }
+            tagBuffer = '';
+          } else if (inTag) {
+            tagBuffer += line[i];
+          } else {
+            textContent += line[i];
+          }
+        }
+
+        // 텍스트가 남아 있으면 추가
+        if (textContent) {
+          currentLine += textContent;
+        }
+
+        result.push(currentLine);
+
+        // 줄바꿈(Enter)이 있으면 이전 태그 닫기 (첫 번째 <div> 닫기)
+        if (lines.indexOf(line) < lines.length - 1 && stack.length > 1) {
+          const lastTag = stack.pop();
+          result.push(`</${lastTag}>`);
+        }
+      }
+
+      // 남은 열린 태그 닫기
+      while (stack.length > 0) {
+        const tag = stack.pop();
+        result.push(`</${tag}>`);
+      }
+
+      // 결과 출력
+      output.textContent = result.join('');
+    });
+  </script>
+</body>
+</html>
