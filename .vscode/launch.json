@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) 디버그 시작",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/a.exe", // 실행 파일 경로
+            "args": [], // 프로그램에 전달할 인수
+            "stopAtEntry": false, // 시작 시 중단 여부
+            "cwd": "${workspaceFolder}", // 작업 디렉터리
+            "environment": [],
+            "externalConsole": true, // 외부 콘솔 사용 여부
+            "MIMode": "gdb", // 디버거 모드
+            "miDebuggerPath": "C:/mingw/bin/gdb.exe", // gdb 경로 (MinGW 사용 시)
+            "setupCommands": [
+                {
+                    "description": "gdb에 자동 서식 지정 사용",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}
