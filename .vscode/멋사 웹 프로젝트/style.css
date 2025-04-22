@@ -5,8 +5,8 @@
   }
   
   .navbar {
-    background-color: rgba(247, 183, 131, 0.901);
-    color: white;
+    background-color: rgb(177, 29, 160);
+    color: rgba(255, 255, 255, 0);
     height: 70px;
     box-shadow: 5px 5px 5px black;
   }
@@ -21,7 +21,7 @@
   }
   
   .nav-item:hover {
-    background-color: #fccf94; /* 마우스 올려둘시 색상 변경경 */
+    background-color: #94fcbc; /* 마우스 올려둘시 색상 변경경 */
   }
   
   .navbar .container {
@@ -43,7 +43,7 @@
   }
   
   .navbar a {
-    color: white;
+    color: rgba(255, 255, 255, 0);
     text-decoration: none; /*기본적으로 텍스트에 밑줄이 쳐지는데 그 스타일을 바꾸는 함수*/
     font-weight: bold;
   }
@@ -162,7 +162,7 @@
     color: rgb(0, 0, 0);
   }
   
-  .bus {
+  .carfull {
     margin-bottom: 30px;
     text-align: center;
   }
@@ -229,10 +229,16 @@
     gap: 20px;
   }
   
-  /* 버스 시간표 이미지 클래스 */
-  .timetable-img-baekseok,
-  .timetable-img-samsong,
-  .timetable-img-jiseon {
+  /* 카풀 이미지 클래스 */
+  .carpool-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 가로 가운데 정렬 */
+    align-items: center; /* 세로 가운데 정렬 */
+    width: 100%;
+  }
+  .
+   {
     display: block; /* JavaScript로 제어하므로 기본값을 block으로 설정 */
   }
   
