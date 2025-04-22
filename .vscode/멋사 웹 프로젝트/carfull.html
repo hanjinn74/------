@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus helper</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <div class="logo">📖 Campus Helper</div>
+        <ul>
+          <li><a href="index.html" class="nav-item">메인</a></li>
+          <li><a href="bus.html" class="nav-item">셔틀버스</a></li>
+          <li><a href="menu.html" class="nav-item">학식메뉴</a></li>
+          <li><a href="study.html" class="nav-item">학습서비스</a></li>
+          <li><a href="otp.html" class="nav-item">OTP</a></li>
+        </ul>
+      </div>
+    </nav>
+    <section class="main-title"><br /></section>
+    <section class="main-check">
+      <!-- 체크박스 영역 (맨 위) -->
+      <div class="bus">
+        <h2>지역 선택</h2>
+        <div class="checkbox-group">
+          <input type="checkbox" id="baekseok" checked />
+          <label for="baekseok">백석</label>
+          <input type="checkbox" id="samsong" checked />
+          <label for="samsong">삼송</label>
+          <input type="checkbox" id="jiseon" checked />
+          <label for="jiseon">지선</label>
+        </div>
+      </div>
+
+      <!-- 메인 콘텐츠 영역 -->
+      <div class="main-text-box">
+        <!-- 선택된 지역 텍스트 박스 -->
+        <div class="selected-text-box">
+          <div class="text-box baekseok">
+            <span class="line"> 백석 |</span>
+            <span class="departure">곧 출발하는 등교 버스: 08:20</span>
+            <span class="line">|</span>
+            <span class="return">곧 출발하는 하교 버스: 11:20</span>
+          </div>
+          <div class="text-box samsong">
+            <span class="line"> 삼송 |</span>
+            <span class="departure">곧 출발하는 등교 버스: 08:20</span>
+            <span class="line">|</span>
+            <span class="return">곧 출발하는 하교 버스: 12:20</span>
+          </div>
+          <div class="text-box jiseon">
+            <span class="line"> 지선 |</span>
+            <span class="departure">곧 출발하는 등교 버스: 07:00</span>
+            <span class="line">|</span>
+            <span class="return">곧 출발하는 하교 버스: 18:20</span>
+          </div>
+        </div>
+
+        <!-- 시간표 이미지 영역 -->
+        <div class="timetable">
+          <!-- 백석 시간표 이미지 -->
+          <div class="timetable-img-baekseok">
+            <div class="schedule">
+              <img src="img/baekseok.png" alt="백석 셔틀버스 시간표" />
+            </div>
+          </div>
+          <!-- 삼송 시간표 이미지 -->
+          <div class="timetable-img-samsong">
+            <div class="schedule">
+              <img src="img/samsong.png" alt="삼송 셔틀버스 시간표" />
+            </div>
+          </div>
+          <!-- 지선 시간표 이미지 -->
+          <div class="timetable-img-jiseon">
+            <div class="schedule">
+              <img src="img/seoul2.png" alt="지선 셔틀버스 등교 시간표" />
+              <img src="img/seoul.png" alt="지선 셔틀버스 하교 시간표" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="main.js"></script>
+  </body>
+</html>
